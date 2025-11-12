@@ -1,0 +1,142 @@
+[
+    {
+        "id": "sphx_glr_bar_colors_001",
+        "image": "matplotlib_image/sphx_glr_bar_colors_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\n\nfig, ax = plt.subplots()\n\nfruits = ['apple', 'blueberry', 'cherry', 'orange']\ncounts = [40, 100, 30, 55]\nbar_labels = ['red', 'blue', '_red', 'orange']\nbar_colors = ['tab:red', 'tab:blue', 'tab:red', 'tab:orange']\n\nax.bar(fruits, counts, label=bar_labels, color=bar_colors)\n\nax.set_ylabel('fruit supply')\nax.set_title('Fruit supply by kind and color')\nax.legend(title='Fruit color')\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_bar_label_demo_001",
+        "image": "matplotlib_image/sphx_glr_bar_label_demo_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nspecies = ('Adelie', 'Chinstrap', 'Gentoo')\nsex_counts = {\n    'Male': np.array([73, 34, 61]),\n    'Female': np.array([73, 34, 58]),\n}\nwidth = 0.6  # the width of the bars: can also be len(x) sequence\n\nfig, ax = plt.subplots()\nbottom = np.zeros(3)\n\nfor sex, sex_count in sex_counts.items():\n    p = ax.bar(species, sex_count, width, label=sex, bottom=bottom)\n    bottom += sex_count\n\n    ax.bar_label(p, label_type='center')\n\nax.set_title('Number of penguins by sex')\nax.legend()\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_bar_stacked_001",
+        "image": "matplotlib_image/sphx_glr_bar_stacked_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# data from https://allisonhorst.github.io/palmerpenguins/\n\nspecies = (\n    \"Adelie\n $\\mu=$3700.66g\",\n    \"Chinstrap\n $\\mu=$3733.09g\",\n    \"Gentoo\n $\\mu=5076.02g$\",\n)\nweight_counts = {\n    \"Below\": np.array([70, 31, 58]),\n    \"Above\": np.array([82, 37, 66]),\n}\nwidth = 0.5\n\nfig, ax = plt.subplots()\nbottom = np.zeros(3)\n\nfor boolean, weight_count in weight_counts.items():\n    p = ax.bar(species, weight_count, width, label=boolean, bottom=bottom)\n    bottom += weight_count\n\nax.set_title(\"Number of penguins with above average body mass\")\nax.legend(loc=\"upper right\")\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_barchart_001",
+        "image": "matplotlib_image/sphx_glr_barchart_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\n# data from https://allisonhorst.github.io/palmerpenguins/\n\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nspecies = (\"Adelie\", \"Chinstrap\", \"Gentoo\")\npenguin_means = {\n    'Bill Depth': (18.35, 18.43, 14.98),\n    'Bill Length': (38.79, 48.83, 47.50),\n    'Flipper Length': (189.95, 195.82, 217.19),\n}\n\nx = np.arange(len(species))  # the label locations\nwidth = 0.25  # the width of the bars\nmultiplier = 0\n\nfig, ax = plt.subplots(layout='constrained')\n\nfor attribute, measurement in penguin_means.items():\n    offset = width * multiplier\n    rects = ax.bar(x + offset, measurement, width, label=attribute)\n    ax.bar_label(rects, padding=3)\n    multiplier += 1\n\n# Add some text for labels, title and custom x-axis tick labels, etc.\nax.set_ylabel('Length (mm)')\nax.set_title('Penguin attributes by species')\nax.set_xticks(x + width, species)\nax.legend(loc='upper left', ncols=3)\nax.set_ylim(0, 250)\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_barh_001",
+        "image": "matplotlib_image/sphx_glr_barh_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Fixing random state for reproducibility\nnp.random.seed(19680801)\n\nfig, ax = plt.subplots()\n\n# Example data\npeople = ('Tom', 'Dick', 'Harry', 'Slim', 'Jim')\ny_pos = np.arange(len(people))\nperformance = 3 + 10 * np.random.rand(len(people))\nerror = np.random.rand(len(people))\n\nax.barh(y_pos, performance, xerr=error, align='center')\nax.set_yticks(y_pos, labels=people)\nax.invert_yaxis()  # labels read top-to-bottom\nax.set_xlabel('Performance')\nax.set_title('How fast do you want to go today?')\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_broken_barh_001",
+        "image": "matplotlib_image/sphx_glr_broken_barh_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\n\n# Horizontal bar plot with gaps\nfig, ax = plt.subplots()\nax.broken_barh([(110, 30), (150, 10)], (10, 9), facecolors='tab:blue')\nax.broken_barh([(10, 50), (100, 20), (130, 10)], (20, 9),\n               facecolors=('tab:orange', 'tab:green', 'tab:red'))\nax.set_ylim(5, 35)\nax.set_xlim(0, 200)\nax.set_xlabel('seconds since start')\nax.set_yticks([15, 25], labels=['Bill', 'Jim'])     # Modify y-axis tick labels\nax.grid(True)                                       # Make grid lines visible\nax.annotate('race interrupted', (61, 25),\n            xytext=(0.8, 0.9), textcoords='axes fraction',\n            arrowprops=dict(facecolor='black', shrink=0.05),\n            fontsize=16,\n            horizontalalignment='right', verticalalignment='top')\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_capstyle_001",
+        "image": "matplotlib_image/sphx_glr_capstyle_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\n\nfrom matplotlib._enums import CapStyle\n\nCapStyle.demo()\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_cohere_001",
+        "image": "matplotlib_image/sphx_glr_cohere_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Fixing random state for reproducibility\nnp.random.seed(19680801)\n\ndt = 0.01\nt = np.arange(0, 30, dt)\nnse1 = np.random.randn(len(t))                 # white noise 1\nnse2 = np.random.randn(len(t))                 # white noise 2\n\n# Two signals with a coherent part at 10 Hz and a random part\ns1 = np.sin(2 * np.pi * 10 * t) + nse1\ns2 = np.sin(2 * np.pi * 10 * t) + nse2\n\nfig, axs = plt.subplots(2, 1, layout='constrained')\naxs[0].plot(t, s1, t, s2)\naxs[0].set_xlim(0, 2)\naxs[0].set_xlabel('Time (s)')\naxs[0].set_ylabel('s1 and s2')\naxs[0].grid(True)\n\ncxy, f = axs[1].cohere(s1, s2, 256, 1. / dt)\naxs[1].set_ylabel('Coherence')\n\nplt.show()\n\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_csd_demo_001",
+        "image": "matplotlib_image/sphx_glr_csd_demo_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nfig, (ax1, ax2) = plt.subplots(2, 1, layout='constrained')\n\ndt = 0.01\nt = np.arange(0, 30, dt)\n\n# Fixing random state for reproducibility\nnp.random.seed(19680801)\n\n\nnse1 = np.random.randn(len(t))                 # white noise 1\nnse2 = np.random.randn(len(t))                 # white noise 2\nr = np.exp(-t / 0.05)\n\ncnse1 = np.convolve(nse1, r, mode='same') * dt   # colored noise 1\ncnse2 = np.convolve(nse2, r, mode='same') * dt   # colored noise 2\n\n# two signals with a coherent part and a random part\ns1 = 0.01 * np.sin(2 * np.pi * 10 * t) + cnse1\ns2 = 0.01 * np.sin(2 * np.pi * 10 * t) + cnse2\n\nax1.plot(t, s1, t, s2)\nax1.set_xlim(0, 5)\nax1.set_xlabel('Time (s)')\nax1.set_ylabel('s1 and s2')\nax1.grid(True)\n\ncxy, f = ax2.csd(s1, s2, 256, 1. / dt)\nax2.set_ylabel('CSD (dB)')\n\nplt.show()\n```"
+            }
+        ]
+    },
+    {
+        "id": "sphx_glr_eventcollection_demo_001",
+        "image": "matplotlib_image/sphx_glr_eventcollection_demo_001.jpg",
+        "conversations": [
+            {
+                "from": "human",
+                "value": "Please write the Python code used to generate this image.\n<image>"
+            },
+            {
+                "from": "gpt",
+                "value": "```python\nimport matplotlib.pyplot as plt\nimport numpy as np\n\nfrom matplotlib.collections import EventCollection\n\n# Fixing random state for reproducibility\nnp.random.seed(19680801)\n\n# create random data\nxdata = np.random.random([2, 10])\n\n# split the data into two parts\nxdata1 = xdata[0, :]\nxdata2 = xdata[1, :]\n\n# sort the data so it makes clean curves\nxdata1.sort()\nxdata2.sort()\n\n# create some y data points\nydata1 = xdata1 ** 2\nydata2 = 1 - xdata2 ** 3\n\n# plot the data\nfig = plt.figure()\nax = fig.add_subplot(1, 1, 1)\nax.plot(xdata1, ydata1, color='tab:blue')\nax.plot(xdata2, ydata2, color='tab:orange')\n\n# create the events marking the x data points\nxevents1 = EventCollection(xdata1, color='tab:blue', linelength=0.05)\nxevents2 = EventCollection(xdata2, color='tab:orange', linelength=0.05)\n\n# create the events marking the y data points\nyevents1 = EventCollection(ydata1, color='tab:blue', linelength=0.05,\n                           orientation='vertical')\nyevents2 = EventCollection(ydata2, color='tab:orange', linelength=0.05,\n                           orientation='vertical')\n\n# add the events to the axis\nax.add_collection(xevents1)\nax.add_collection(xevents2)\nax.add_collection(yevents1)\nax.add_collection(yevents2)\n\n# set the limits\nax.set_xlim([0, 1])\nax.set_ylim([0, 1])\n\nax.set_title('line plot with data points')\n\n# display the plot\nplt.show()\n```"
+            }
+        ]
+    }
+]
